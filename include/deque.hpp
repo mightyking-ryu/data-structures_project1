@@ -119,7 +119,10 @@ size_t ArrayDeque<T>::capacity() {
 template <typename T>
 T& ArrayDeque<T>::operator[](size_t idx) {
     // TODO
-    return *new T{};
+    if ((idx < 0) || (idx >= this->size_)) {
+        throw std::out_of_range("Index out of range!");
+    }
+    return this->arr[(this->front + idx + 1) % this->capacity_];
 }
 
 template<typename T>
