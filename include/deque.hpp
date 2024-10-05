@@ -116,6 +116,16 @@ std::optional<T> ArrayDeque<T>::remove_back() {
 template <typename T>
 void ArrayDeque<T>::resize() {
     // TODO
+    std::unique_ptr<T[]> arr_resized = std::make_unique<T[]>(2 * this->capacity_);
+    for(int i = 0; i < this->back; i++) {
+        arr_resized[i] = this->arr[i];
+    }
+    for(int i = this->front + 1; i < this->capacity_; i++) {
+        arr_resized[i + this->capacity_] = this->arr[i];
+    }
+    this->front += this->capacity_;
+    this->capacity_ *= 2;
+    this->arr = std::move(arr_resized);
 }
 
 template <typename T>
