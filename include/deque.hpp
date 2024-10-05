@@ -80,13 +80,25 @@ void ArrayDeque<T>::push_back(const T& item) {
 template <typename T>
 std::optional<T> ArrayDeque<T>::remove_front() {
     // TODO
-    return std::nullopt;
+    if(this->empty()) {
+        return std::nullopt;
+    } else {
+        this->front = (this->front + 1) % this->capacity_;
+        this->size_ -= 1;
+        return this->arr[this->front];
+    }
 }
 
 template <typename T>
 std::optional<T> ArrayDeque<T>::remove_back() {
     // TODO
-    return std::nullopt;
+    if(this->empty()) {
+        return std::nullopt;
+    } else {
+        this->back = (this->back == 0 ? this->capacity_ : this->back) - 1;
+        this->size_ -= 1;
+        return this->arr[this->back];
+    }
 }
 
 template <typename T>
