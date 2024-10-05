@@ -70,11 +70,23 @@ ArrayDeque<T>::ArrayDeque() :
 template <typename T>
 void ArrayDeque<T>::push_front(const T& item) {
     // TODO
+    if(this->front == this->back) {
+        this->resize();
+    }
+    this->arr[this->front] = item;
+    this->front = (this->front == 0 ? this->capacity_ : this->front) - 1;
+    this->size_ += 1;
 }
 
 template <typename T>
 void ArrayDeque<T>::push_back(const T& item) {
     // TODO
+    if(this->front == this->back) {
+        this->resize();
+    }
+    this->arr[this->back] = item;
+    this->back = (this->back + 1) % this->capacity_;
+    this->size_ += 1;
 }
 
 template <typename T>
