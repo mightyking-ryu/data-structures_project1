@@ -97,19 +97,23 @@ void ArrayDeque<T>::resize() {
 template <typename T>
 bool ArrayDeque<T>::empty() {
     // TODO
-    return false;
+    if(this->size_ == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 template <typename T>
 size_t ArrayDeque<T>::size() {
     // TODO
-    return 0;
+    return this->size_;
 }
 
 template <typename T>
 size_t ArrayDeque<T>::capacity() {
     // TODO
-    return 0;
+    return this->capacity_;
 }
 
 template <typename T>
