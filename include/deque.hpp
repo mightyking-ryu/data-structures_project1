@@ -222,7 +222,7 @@ std::optional<T> ListDeque<T>::remove_front() {
         ListNode<T>* oldNew = this->sentinel->next;
         oldNew->next->prev = this->sentinel;
         this->sentinel->next = oldNew->next;
-        T deletedValue = oldNew->value->value;
+        T deletedValue = oldNew->value->value();
         delete oldNew;
         return deletedValue;
     }
@@ -237,7 +237,7 @@ std::optional<T> ListDeque<T>::remove_back() {
         ListNode<T>* oldPrev = this->sentinel->prev;
         oldPrev->prev->next = this->sentinel;
         this->sentinel->prev = oldPrev->prev;
-        T deletedValue = oldPrev->value->value;
+        T deletedValue = oldPrev->value->value();
         delete oldPrev;
         return deletedValue;
     }
@@ -269,7 +269,7 @@ T& ListDeque<T>::operator[](size_t idx) {
     for(int i = 0; i < idx; i++) {
         targetNode = targetNode->next;
     }
-    return targetNode->value->value;
+    return targetNode->value->value();
 }
 
 template<typename T>
