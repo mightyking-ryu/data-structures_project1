@@ -262,7 +262,14 @@ size_t ListDeque<T>::size() {
 template<typename T>
 T& ListDeque<T>::operator[](size_t idx) {
     // TODO
-    return *new T{};
+    if ((idx < 0) || (idx >= this->size_)) {
+        throw std::out_of_range("Index out of range!");
+    }
+    ListNode<T>* targetNode = this->sentinel->next;
+    for(int i = 0; i < idx; i++) {
+        targetNode = targetNode->next;
+    }
+    return targetNode->value;
 }
 
 template<typename T>
