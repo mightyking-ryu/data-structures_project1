@@ -15,7 +15,21 @@ private:
 template<typename Deque>
 bool Palindrome<Deque>::is_palindrome(const std::string& s1) {
     // TODO
-    return false;
+    this->reset_deque();
+    for(int i = 0; i < s1.length(); i++) {
+        this->deque.push_back(s1[i]);
+    }
+
+    std::string s2 = "";
+    while(!this->deque.empty()) {
+        s2.push_back(this->deque.remove_back().value());
+    }
+
+    if(s1.compare(s2) == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 template<typename Deque>
