@@ -294,6 +294,14 @@ std::ostream& operator<<(std::ostream& os, const ListDeque<T>& l) {
 template<typename T>
 ListDeque<T>::~ListDeque() {
     // TODO
+    this->sentinel->prev->next = nullptr;
+    ListNode<T>* currentNode = nullptr;
+    ListNode<T>* nextNode = this->sentinel;
+    while(nextNode != nullptr) {
+        currentNode = nextNode;
+        nextNode = nextNode->next;
+        delete currentNode;
+    }
 }
 
 #endif // _DEQUE_H
