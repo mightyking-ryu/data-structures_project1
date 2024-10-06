@@ -199,7 +199,9 @@ template<typename T>
 void ListDeque<T>::push_front(const T& t) {
     // TODO
     ListNode<T>* oldNext = this->sentinel->next;
-    this->sentinel->next = new ListNode<T>{t, this->sentinel, oldNext};
+    this->sentinel->next = new ListNode<T>(t);
+    this->sentinel->next->prev = this->sentinel;
+    this->sentinel->next->next = oldNext;
     oldNext->prev = this->sentinel->next;
     this->size_ += 1;
 }
@@ -208,7 +210,9 @@ template<typename T>
 void ListDeque<T>::push_back(const T& t) {
     // TODO
     ListNode<T>* oldPrev = this->sentinel->prev;
-    this->sentinel->prev = new ListNode<T>{t, oldPrev, this->sentinel};
+    this->sentinel->prev = new ListNode<T>(t);
+    this->sentinel->prev->next = this->sentinel;
+    this->sentinel->prev->prev = oldPrev;
     oldPrev->next = this->sentinel->prev;
     this->size_ += 1;
 }
