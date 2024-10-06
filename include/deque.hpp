@@ -216,13 +216,31 @@ void ListDeque<T>::push_back(const T& t) {
 template<typename T>
 std::optional<T> ListDeque<T>::remove_front() {
     // TODO
-    return std::nullopt;
+    if(this->empty()) {
+        return std::nullopt;
+    } else {
+        ListNode<T>* oldNew = this->sentinel->next;
+        oldNew->next->prev = this->sentinel;
+        this->sentinel->next = oldNew->next;
+        T deletedValue = oldNew->value;
+        delete oldNew;
+        return deletedValue;
+    }
 }
 
 template<typename T>
 std::optional<T> ListDeque<T>::remove_back() {
     // TODO
-    return std::nullopt;
+    if(this->empty()) {
+        return std::nullopt;
+    } else {
+        ListNode<T>* oldPrev = this->sentinel->prev;
+        oldPrev->prev->next = this->sentinel;
+        this->sentinel->prev = oldPrev->prev;
+        T deletedValue = oldPrev->value;
+        delete oldPrev;
+        return deletedValue;
+    }
 }
 
 template<typename T>
