@@ -220,13 +220,17 @@ std::optional<T> ListDeque<T>::remove_back() {
 template<typename T>
 bool ListDeque<T>::empty() {
     // TODO
-    return false;
+    if(this->size_ == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 template<typename T>
 size_t ListDeque<T>::size() {
     // TODO
-    return 0;
+    return this->size_;
 }
 
 template<typename T>
