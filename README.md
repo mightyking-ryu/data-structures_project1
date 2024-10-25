@@ -10,10 +10,10 @@
 
 ### Table of contents
 
-1. [Deque API](#Deque-API)
-2. [Array Deque](#Array-Deque)
-3. [List Deque](#List-Deque)
-4. [Palindrome](#Palindrome)
+1. [Deque API](#deque-aPI)
+2. [Array Deque](#array-deque-implementation)
+3. [List Deque](#linked-list-deque-implementation)
+4. [Palindrome](#application-palindrome)
 
 ## Deque API
 
